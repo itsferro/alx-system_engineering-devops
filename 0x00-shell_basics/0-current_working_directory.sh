@@ -1,5 +1,3 @@
 #!/bin/bash
+pwd
 
-current_working_directory=$(pwd)
-
-echo "$current_working_directory"
