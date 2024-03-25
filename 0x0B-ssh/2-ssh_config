@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Connect to a server without typing a password
+echo "
+Host *
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication no" >> ~/.ssh/config
+
+chmod 600 ~/.ssh/config
