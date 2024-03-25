@@ -2,13 +2,13 @@
 include stdlib
 
 file_line { 'Declare identity file':
-  path  => '~/.ssh/config',
+  path  => '/root/.ssh/config',
   line  => ' IdentityFile ~/.ssh/school',
   match => '^Host *',
 }
 
 file_line { 'Turn off passwd auth':
-  path  => '~/.ssh/config',
+  path  => '/root/.ssh/config',
   line  => ' PasswordAuthentication no',
   match => '^Host *',
 }
