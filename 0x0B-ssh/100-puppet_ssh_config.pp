@@ -3,6 +3,7 @@ include stdlib
 
 file { '/root/.ssh/config':
   ensure => present,
+  mode   => 0600,
 }
 
 file_line { 'The host configuration':
