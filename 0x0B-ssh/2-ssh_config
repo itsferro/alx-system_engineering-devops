@@ -1,8 +1,16 @@
 #!/usr/bin/env bash
 # Connect to a server without typing a password
-echo "
-Host *
-    IdentityFile ~/.ssh/school
-    PasswordAuthentication no" >> ~/.ssh/config
+#echo "
+#Host *
+#    IdentityFile ~/.ssh/school
+#    PasswordAuthentication no" >> ~/.ssh/config
 
+# Append the SSH client configuration to the file
+cat >> ~/.ssh/config <<EOF
+Host $server_ip
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication no
+EOF
+
+# Set appropriate permissions on the SSH client configuration file
 chmod 600 ~/.ssh/config
