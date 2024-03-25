@@ -7,7 +7,7 @@
 
 # Append the SSH client configuration to the file
 cat >> ~/.ssh/config <<EOF
-Host $server_ip
+Host *
     IdentityFile ~/.ssh/school
     PasswordAuthentication no
 EOF
