@@ -1,4 +1,5 @@
 #so that you can connect to a server without typing a password.
+include stdlib
 
 file_line { 'Declare identity file':
   path  => '~/.ssh/config',
