@@ -9,7 +9,7 @@ tee /etc/nginx/conf.d/redirect.conf > /dev/null <<EOF
 server {
     listen 80;
     server_name _;
-    return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    return 301 https://www.youtube.com/watch?v=xvFZjo5PgG0;
 }
 EOF
 # Remove the default configuration file
