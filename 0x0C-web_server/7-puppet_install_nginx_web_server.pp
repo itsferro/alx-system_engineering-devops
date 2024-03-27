@@ -27,11 +27,7 @@ file { '/etc/nginx/sites-available/default':
         root /var/www/html;
         index index.html;
 
-        location = /redirect_me {
-                return 301 https://www.youtube.com/watch?v=xvFZjo5PgG0;
-        }
-
-        location = /mystery {
+        location = /redirect_me/ {
                 return 301 https://www.youtube.com/watch?v=xvFZjo5PgG0;
         }
 
