@@ -5,14 +5,17 @@ if ! command -v nginx >/dev/null 2>&1; then
     apt-get install -y nginx
 fi
 # Create a configuration file for the redirection
-tee /etc/nginx/conf.d/redirect.conf > /dev/null <<EOF
+tee /etc/nginx/sites-available/default > /dev/null <<EOF
 server {
-    listen 80;
-    server_name _;
-    return 301 https://www.youtube.com/watch?v=xvFZjo5PgG0;
+	listen 80;
+	server_name _;
+
+	location /redirect_me {
+		return 301 https://www.youtube.com/watch?v=xvFZjo5PgG0;
+	}
 }
 EOF
-# Remove the default configuration file
-rm /etc/nginx/sites-enabled/default
+# Make a sympolic link for the default server
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 # Restart nginx to apply the changes
 service nginx restart

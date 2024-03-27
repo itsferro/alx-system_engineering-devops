@@ -7,19 +7,24 @@ fi
 #Create a custom 404 page
 echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
 #Create a configuration file for the custom 404 page
-tee /etc/nginx/conf.d/not_found.conf > /dev/null <<EOF
+tee /etc/nginx/sites-available/default > /dev/null <<EOF
 server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
 	server_name _;
 
+	location /redirect_me {
+		return 301 https://www.youtube.com/watch?v=xvFZjo5PgG0;
+	}
+
 	error_page 404 /custom_404.html;
 	location = /custom_404.html {
 		root /var/www/html;
+		internal;
 	}
 }
 EOF
-#Remove the default configuration file
-rm /etc/nginx/sites-enabled/default
+# Make a sympolic link for the default server
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 #Restart nginx to apply changes
 service nginx restart
