@@ -10,6 +10,11 @@ file { '/var/www/html/custom_404.html':
   content => "Ceci n'est pas une page",
 }
 
+#create an index.html
+file { '/var/www/html/index.html':
+  content => "Ceci n'est pas une page",
+}
+
 #create a config file for the custom 404 page
 file { '/etc/nginx/sites-available/default':
   ensure  => present,
@@ -17,6 +22,9 @@ file { '/etc/nginx/sites-available/default':
         listen 80 default_server;
         listen [::]:80 default_server;
         server_name _;
+
+	root /var/www/html;
+	index index.html index.nginx-debian.html
 
         location = /redirect_me {
                 return 301 https://www.youtube.com/watch?v=xvFZjo5PgG0;
