@@ -7,12 +7,16 @@ fi
 # Create a configuration file for the redirection
 tee /etc/nginx/sites-available/default > /dev/null <<EOF
 server {
-	listen 80;
-	server_name _;
+        listen 80;
+        server_name _;
 
-	location /redirect_me {
-		return 301 https://www.youtube.com/watch?v=xvFZjo5PgG0;
-	}
+        location = /redirect_me {
+                return 301 https://www.youtube.com/watch?v=xvFZjo5PgG0;
+        }
+
+        location = /mystery {
+                return 301 https://www.youtube.com/watch?v=xvFZjo5PgG0;
+        }
 }
 EOF
 # Make a sympolic link for the default server
