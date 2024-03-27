@@ -16,11 +16,6 @@ server {
         }
 }
 EOF
-#        location = /mystery {
-#                return 301 https://www.youtube.com/watch?v=xvFZjo5PgG0;
-#        }
-#}
-#EOF
 # Make a sympolic link for the default server
 ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 # Restart nginx to apply the changes
