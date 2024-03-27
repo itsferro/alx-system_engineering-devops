@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#Install nginx if it's not already installed
+if ! command -v nginx >/dev/null 2>&1; then
+	apt-get update
+	apt-get install -y nginx
+fi
+#Create a custom 404 page
+echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+#Create a configuration file for the custom 404 page
+tee /etc/nginx/conf.d/not_found.conf > /dev/null <<EOF
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	server_name _;
+
+	error_page 404 /custom_404.html;
+	location = /custom_404.html {
+		root /var/www/html;
+	}
+}
+EOF
+#Remove the default configuration file
+rm /etc/nginx/sites-enabel/default
+#Restart nginx to apply changes
+service nginx restart
