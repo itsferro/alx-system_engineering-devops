@@ -5,6 +5,11 @@ package { 'nginx':
   ensure => installed,
 }
 
+#install haproxy if it's not already installed
+package { 'haproxy':
+  ensure => installed
+}
+
 #create a custom 404 page
 file { '/var/www/html/custom_404.html':
   ensure  => present,
