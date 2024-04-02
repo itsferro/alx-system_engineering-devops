@@ -5,11 +5,6 @@ package { 'nginx':
   ensure => installed,
 }
 
-#install haproxy if it's not already installed
-package { 'haproxy':
-  ensure => installed
-}
-
 #create a custom 404 page
 file { '/var/www/html/custom_404.html':
   ensure  => present,
@@ -32,7 +27,7 @@ file { '/etc/nginx/sites-available/default':
         root /var/www/html;
         index index.html;
 
-	add_header X-Served-By $hostname;
+	add_header X-Served-By \$hostname;
 
         location = /redirect_me/ {
                 return 301 https://www.youtube.com/watch?v=xvFZjo5PgG0;
@@ -44,7 +39,7 @@ file { '/etc/nginx/sites-available/default':
                 internal;
         }
 }",
-  mode => '0755',
+  mode    => '0755',
 }
 
 #create a sympolic link for the default server
@@ -55,7 +50,7 @@ exec { 'enables the default site':
 }
 
 service{ 'nginx':
-  ensure => running,
-  enable => true,
+  ensure  => running,
+  enable  => true,
   restart => '/usr/sbin/service nginx reload',
 }
