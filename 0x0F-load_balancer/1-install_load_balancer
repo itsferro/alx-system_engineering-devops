@@ -31,4 +31,4 @@ EOF
 sudo systemctl enable haproxy
 
 # Restart HAProxy
-sudo systemctl restart haproxy
+sudo service haproxy reload
