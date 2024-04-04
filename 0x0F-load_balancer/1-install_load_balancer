@@ -2,11 +2,13 @@
 #nstall and configure HAproxy on your server.
 
 # Install HAProxy
-sudo apt-get update
-sudo apt-get install -y haproxy
+if ! command -v nginx >/dev/null 2>&1; then
+        apt-get update
+        apt-get install -y haproxy
+fi
 
 # Configure HAProxy
-sudo tee /etc/haproxy/haproxy.cfg > /dev/null <<EOF
+tee /etc/haproxy/haproxy.cfg > /dev/null <<EOF
 global
     daemon
     maxconn 256
@@ -28,7 +30,7 @@ backend servers
 EOF
 
 # Enable HAProxy as a service
-sudo systemctl enable haproxy
+systemctl enable haproxy
 
 # Restart HAProxy
-sudo service haproxy reload
+systemctl reload haproxy
