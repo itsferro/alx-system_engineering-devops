@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#fixing the nginx port 80 problem
+
+#deleting the default file
+/etc/nginx/sites-enabled/default
+
+#making the default file agein
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+#relaoding the nginx
+nginx -s relaod
