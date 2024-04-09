@@ -4,11 +4,8 @@
 #changing the port to be port 80
 sed -i 's/8080/80/' /etc/nginx/sites-available/default
 
-#deleting the default file
-#/etc/nginx/sites-enabled/default
-
 #making the default file agein
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
 #relaoding the nginx
-nginx -s relaod
+service nginx restart
