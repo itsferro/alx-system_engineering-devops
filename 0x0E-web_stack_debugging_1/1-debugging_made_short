@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 #fixing the nginx port 80 problem
-ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sed -i 's/8080/80/' /etc/nginx/sites-enabled/default
 service nginx restart
 sudo pkill -o nginx
