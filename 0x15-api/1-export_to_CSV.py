@@ -15,13 +15,17 @@ def main(user_id):
     """
     Fetches employee data and TODO list from an API and displays the progress.
     """
-    with open('USER_ID.csv', mode='w') as csvfile:
+    file_name = str(user_id) + ".csv"
+    with open(file_name, mode='w') as csvfile:
         fieldnames = [
                 "USER_ID",
                 "USERNAME",
                 "TASK_COMPLETED_STATUS",
                 "TASK_TITLE"]
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
+        writer = csv.DictWriter(
+                csvfile,
+                fieldnames=fieldnames,
+                quoting=csv.QUOTE_ALL)
 
         url = f'https://jsonplaceholder.typicode.com/users/{user_id}'
         response = requests.get(url)
