@@ -30,7 +30,7 @@ def main(user_id):
         url = f'https://jsonplaceholder.typicode.com/users/{user_id}'
         response = requests.get(url)
         user_data = response.json()
-        user_name = user_data["name"]
+        user_name = user_data["username"]
 
         response = requests.get(f'{url}/todos')
         user_todos = response.json()
