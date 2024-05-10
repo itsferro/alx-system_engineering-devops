@@ -21,7 +21,9 @@ def recurse(subreddit, hot_list=[], after=None):
             data = response.json()
             for i in range(100):
                 try:
-                    hot_list.append(data["data"]["children"][i]["data"]["title"])
+                    hot_list.append(
+                            data["data"]["children"][i]["data"]["title"]
+                            )
                 except Exception:
                     if len(hot_list):
                         pass
