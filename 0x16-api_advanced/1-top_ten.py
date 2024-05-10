@@ -24,7 +24,7 @@ def top_ten(subreddit):
     headers = {"User-Agent": "Mozilla/5.0", "raw_json": "1"}
 
     try:
-        response = requests.get(url, headers=headers)
+        response = requests.get(url, headers=headers, allow_redirects=False)
         if response.status_code == 200:
             data = response.json()
             titles = []
