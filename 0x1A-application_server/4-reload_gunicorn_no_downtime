@@ -3,6 +3,4 @@
 
 gunicorn_pid=$(pgrep gunicorn)
 
-if [[ -n $gunicorn_pid ]]; then
-  kill -s HUP "$gunicorn_pid"
-fi
+kill -s HUP "$gunicorn_pid"
