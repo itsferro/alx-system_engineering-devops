@@ -4,5 +4,4 @@
 #gunicorn_pid=$(pgrep gunicorn)
 gunicorn_pid=$(pgrep -f "gunicorn: master")
 
-#kill -s HUP "$gunicorn_pid"
-kill -s USR2 "$gunicorn_pid"
+kill -HUP "$gunicorn_pid"
