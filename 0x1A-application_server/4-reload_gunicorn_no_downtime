@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # reload Gunicorn in a graceful way.
 
-gunicorn_pid=$(pgrep gunicorn)
+#gunicorn_pid=$(pgrep gunicorn)
 
 #shellcheck disable=SC2086
-kill -s HUP $gunicorn_pid
+#kill -s HUP $gunicorn_pid
+
+ps aux | grep gunicorn | awk '{ print $2 }' | xargs kill -s HUP
