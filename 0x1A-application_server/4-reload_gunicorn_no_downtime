@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # reload Gunicorn in a graceful way.
 
-#gunicorn_pid=$(pgrep gunicorn)
-gunicorn_pid=$(pgrep -f "gunicorn: master")
+gunicorn_pid=$(pgrep gunicorn)
 
-kill -HUP "$gunicorn_pid"
+#shellcheck disable=SC2086
+kill -s HUP $gunicorn_pid
