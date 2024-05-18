@@ -6,4 +6,5 @@
 #shellcheck disable=SC2086
 #kill -s HUP $gunicorn_pid
 
+#shellcheck disable=SC2009
 ps aux | grep gunicorn | awk '{ print $2 }' | xargs kill -s HUP
