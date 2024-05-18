@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # reload Gunicorn in a graceful way.
 
-gunicorn_pid=$(pgrep gunicorn)
+#gunicorn_pid=$(pgrep gunicorn)
+gunicorn_pid=$(pgrep -f "gunicorn: master")
 
 kill -s HUP "$gunicorn_pid"
