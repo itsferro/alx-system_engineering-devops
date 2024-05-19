@@ -2,15 +2,13 @@
 # so that it is possible to login with the holberton user
 # and open a file without any error message.
 
-file { '/etc/security/limits.d/holberton.conf':
-  ensure  => present,
-  content => "holberton hard nofile 65536\nholberton soft nofile 65536\n",
-  owner   => 'root',
-  group   => 'root',
-  mode    => '0644',
+exec {'replace-1':
+  provider => shell,
+  command  => 'sudo sed -i "s/nofile 5/nofile 50000/" /etc/security/limits.conf',
+  before   => Exec['replace-2'],
 }
 
-exec { 'reload_limits':
-  command     => 'sysctl -p',
-  refreshonly => true,
+exec {'replace-2':
+  provider => shell,
+  command  => 'sudo sed -i "s/nofile 4/nofile 40000/" /etc/security/limits.conf',
 }
