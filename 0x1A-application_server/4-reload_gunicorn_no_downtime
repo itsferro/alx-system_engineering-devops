@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-# reload Gunicorn in a graceful way.
-
-#shellcheck disable=SC2046
-kill -s HUP $(pgrep gunicorn)
