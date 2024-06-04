@@ -27,8 +27,11 @@ def top_ten(subreddit):
         response = requests.get(url, headers=headers, allow_redirects=False)
         if response.status_code == 200:
             data = response.json()
-            for child in data["data"]["children"]:
-                print(child["data"]["title"])
+            try:
+                for child in data["data"]["children"]:
+                    print(child["data"]["title"])
+            except Exception:
+                print(None)
         else:
             print(None)
     except requests.exceptions.RequestException:
