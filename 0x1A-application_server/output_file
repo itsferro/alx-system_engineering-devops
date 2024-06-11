@@ -1,0 +1,5 @@
+22,25d21
+<         location /api/ {
+<                 proxy_pass http://localhost:5002/api/;
+<         }
+< 
