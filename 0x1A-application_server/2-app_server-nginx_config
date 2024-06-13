@@ -11,8 +11,8 @@ server {
                 return 301 https://www.youtube.com/watch?v=xvFZjo5PgG0;
         }
 
-        location = /airbnb-onepage/ {
-                proxy_pass http://localhost:5000;
+        location /airbnb-onepage/ {
+                proxy_pass http://localhost:5000/airbnb-onepage/;
         }
 
         error_page 404 /custom_404.html;
